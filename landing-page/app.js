@@ -8,5 +8,6 @@ socket.on('message', text => {
 
 document.querySelector('button').onClick = () => {
 	const text = document.querySelector('input').value;
-	socket.emit('message',text)
+	console.log(text);
+	socket.emit('message', text)
 }
