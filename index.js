@@ -1,7 +1,6 @@
-//const http = require('http').createServer();
-const express = require('express')
-const app = express();
-const PORT = process.env.PORT || 8080;
+const app = require('express')()
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server)
 
 
 //Serve static HTML file
@@ -10,16 +9,7 @@ app.get('/', (req,res) => {
   res.sendFile('index.html', {root:__dirname + '/landing-page'});
 });
 
-
-const surver = app.listen(PORT, "!! - Listening on port " + PORT);
-//http.listen(process.env.PORT || 8080, () => console.log('Listening'));
-
-
-
-//Import socketIO and setup CORS to get/send messages to and from any domain
-const io = require('socket.io');
-io.listen(surver);
-
+server.listen(process.env.PORT)
 
 io.on('connection', (socket) => {
   console.log('A user connected!');
