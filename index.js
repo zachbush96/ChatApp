@@ -17,7 +17,8 @@ const surver = app.listen(PORT, "!! - Listening on port " + PORT);
 
 
 //Import socketIO and setup CORS to get/send messages to and from any domain
-const io = require('socket.io').listen(surver);
+const io = require('socket.io');
+io.listen(surver);
 
 
 io.on('connection', (socket) => {
