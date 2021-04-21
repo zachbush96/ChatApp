@@ -12,8 +12,8 @@
   ],
   "dependencies": {
     "socket.io": "^4.0.0",
-    "http": "*"
-
+    "http": "*",
+    "express": "^4.16.4"
   },
   "engines": {
     "node": ">=0.10.0"
