@@ -15,6 +15,7 @@ app.get('/', (req,res) => {
 
 io.on('connection', (socket) => {
   console.log('A user connected!');
+  socket.broadcast.emit("THIS TEST MESSAGE NOT FROM A USER");
   socket.on('message', (message) => {
     console.log(message);
     io.emit('message', '${socket.id.substr(0,2)} said ${message}' );  
