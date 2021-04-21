@@ -1,4 +1,4 @@
-const socket = io('ws://zach-chat.herokuapp.com:8080');
+const socket = io('ws://zach-chat.herokuapp.com');
 
 socket.on('message', text => {
 	const el = document.createElement('li');
