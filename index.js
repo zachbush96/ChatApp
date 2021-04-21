@@ -1,6 +1,9 @@
-const app = require('express')()
-  , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server)
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 
 //Serve static HTML file
@@ -9,7 +12,6 @@ app.get('/', (req,res) => {
   res.sendFile('index.html', {root:__dirname + '/landing-page'});
 });
 
-server.listen(process.env.PORT)
 
 io.on('connection', (socket) => {
   console.log('A user connected!');
@@ -18,3 +20,6 @@ io.on('connection', (socket) => {
     io.emit('message', '${socket.id.substr(0,2)} said ${message}' );  
   });
 });
+
+server.listen(process.env.PORT)
+
