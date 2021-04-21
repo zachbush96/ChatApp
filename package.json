@@ -1,0 +1,21 @@
+{
+  "name": "ChatApp",
+  "version": "0.1",
+  "description": "Using websockets to create a chat app",
+  "license": "MIT",
+  "author": "Zach Bush",
+
+  "main": "index.js",
+  "files": [
+    "Procfile",
+    "index.js"
+  ],
+  "dependencies": {
+    "socket.io": "^4.0.0",
+    "http": "*"
+
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
