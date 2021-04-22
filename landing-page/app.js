@@ -9,10 +9,11 @@ socket.on('message', text => {
 function ButtonClicked() {
 	const text = document.getElementById('input').value;
 	console.log(text);
-	socket.emit('message', text)	
+	socket.emit('message', text);
+	document.getElementById('input').value = "";
 	
 }
 function ClearScreen() {
 	document.querySelector('ul').innerHTML = "";
-	console.log("Screen Cleared")		
+	console.log("Screen Cleared");
 }
