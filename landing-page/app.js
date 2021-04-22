@@ -8,8 +8,13 @@ socket.on('message', text => {
 
 function ButtonClicked() {
 	const text = document.getElementById('input').value;
-	console.log(text);
-	socket.emit('message', text);
+	const username = document.getElementById('username').value;
+	console.log(usernam, text);
+	const fullMessage = {
+	'user' = username,
+	'message' = text
+	};
+	socket.emit('message', fullMessage);
 	document.getElementById('input').value = "";
 	
 }
