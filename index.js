@@ -27,7 +27,8 @@ io.on('connection', (socket) => {
     console.log("msg object: "+msg);
     console.log("msg user: "+ msg.user);
     console.log("msg text: " + msg.message);
-    io.emit('message', `${socket.id.substr(0,2)} said: ${msg}` );  
+    //io.emit('message', `${socket.id.substr(0,2)} said: ${msg}` );
+    io.emit('message', msg.user + "said: " + msg.message);
   });
 });
 
