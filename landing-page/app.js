@@ -6,8 +6,9 @@ socket.on('message', text => {
 	document.querySelector('ul').appendChild(el);
 });
 
-const buttn = document.getElementById('button').onClick = () => {
+function ButtonClicked() {
 	const text = document.getElementById('input').value;
 	console.log(text);
-	socket.emit('message', text)
+	socket.emit('message', text)	
+	
 }
