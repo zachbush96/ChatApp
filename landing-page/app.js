@@ -9,7 +9,7 @@ socket.on('message', text => {
 function ButtonClicked() {
 	const text = document.getElementById('input').value;
 	const username = document.getElementById('username').value;
-	console.log(usernam, text);
+	console.log(username, text);
 	const fullMessage = {
 	user: username,
 	message: text
