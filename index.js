@@ -17,7 +17,7 @@ var last10 = [];
 io.on('connection', (socket) => {
   console.log('A user connected!');
   io.emit('message', "WELCOME!");
-  for (var x 0; x < last10.length; x++){
+  for (var x = 0; x < last10.length; x++){
     io.emit('message', last10[x]);
   }
   socket.on('message', (msg) => {
