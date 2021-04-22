@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
   socket.broadcast.emit("THIS TEST MESSAGE NOT FROM A USER");
   socket.on('message', (msg) => {
     console.log("message: " + msg);
-    io.emit('message', '${socket.id.substr(0,2)} said ${msg}' );  
+    io.emit('message', `${socket.id.substr(0,2)} said ${msg}` );  
   });
 });
 
