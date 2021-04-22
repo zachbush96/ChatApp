@@ -18,6 +18,7 @@ io.on('connection', (socket) => {
   console.log('A user connected!');
   //io.emit('message', "WELCOME!");
   for (var x = 0; x < last10.length; x++){
+    console.log("Last10 " + x + " : "+last10[x].user + " said: " + last10[x].message)
     io.emit('message', last10[x].user + " said: " + last10[x].message);
   }
   socket.on('message', (msg) => {
