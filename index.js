@@ -16,9 +16,9 @@ var last10 = [];
 
 io.on('connection', (socket) => {
   console.log('A user connected!');
-  io.emit("THIS TEST MESSAGE NOT FROM A USER");
+  io.emit('message', "THIS TEST MESSAGE NOT FROM A USER");
   for (var item in last10){
-    io.emit(item);
+    io.emit('message', item);
   }
   socket.on('message', (msg) => {
     last10.push(`${socket.id.substr(0,2)} said ${msg}`);
