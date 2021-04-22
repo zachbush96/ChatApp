@@ -24,6 +24,9 @@ io.on('connection', (socket) => {
     last10.push(`${socket.id.substr(0,2)} said ${msg}`);
     console.log("Last 10: "+last10);
     console.log("message: " + msg);
+    console.log("msg object: "+msg);
+    console.log("msg username: "+ msg.username);
+    console.log("msg text: " + msg.message);
     io.emit('message', `${socket.id.substr(0,2)} said: ${msg}` );  
   });
 });
