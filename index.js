@@ -18,11 +18,11 @@ io.on('connection', (socket) => {
   console.log('A user connected!');
   //io.emit('message', "WELCOME!");
   for (var x = 0; x < last10.length; x++){
-    console.log("Last10 " + x + " : "+last10[x].user + " said: " + last10[x].message)
+    console.log("-->" + last10[x].message);
     io.emit('message', last10[x].user + " said: " + last10[x].message);
   }
   socket.on('message', (msg) => {
-    //last10.push(`${socket.id.substr(0,2)} said ${msg}`);
+    last10.push(msg);
     console.log("Last 10: "+last10);
     console.log("message: " + msg);
     console.log("msg object: "+msg);
