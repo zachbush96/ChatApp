@@ -11,8 +11,8 @@ function ButtonClicked() {
 	const username = document.getElementById('username').value;
 	console.log(usernam, text);
 	const fullMessage = {
-	'user' = username,
-	'message' = text
+	user: username,
+	message: text
 	};
 	socket.emit('message', fullMessage);
 	document.getElementById('input').value = "";
