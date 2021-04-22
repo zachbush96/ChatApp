@@ -12,3 +12,7 @@ function ButtonClicked() {
 	socket.emit('message', text)	
 	
 }
+function ClearScreen() {
+	document.querySelector('ul').innerHTML = "";
+	console.log("Screen Cleared")		
+}
