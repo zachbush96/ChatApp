@@ -12,24 +12,22 @@ app.get('/', (req,res) => {
   res.sendFile('index.html', {root:__dirname + '/landing-page'});
 });
 
-var last10 = [];
+var AllMessages = [];   //Used to hold all previous messages send. *SHOULD* be changed to a DB so they dont dissapear when the service is restarted
 
+//When User Connects -->
 io.on('connection', (socket) => {
   console.log('A user connected!');
-  //io.emit('message', "WELCOME!");
-  for (var x = 0; x < last10.length; x++){
-    console.log("-->" + last10[x].message);
-    io.emit('message', last10[x].user + " said: " + last10[x].message);
+  
+  //Whenever a new user connects, all the previous messages are sent back out. This *SHOULD* only occur to the newly connected user, not every user that is connected
+  for (var x = 0; x < AllMessages.length; x++){
+    //I think there is an alternative to 'io.emit' that would be more helpfull
+    io.emit('message', AllMessages[x].user + " said: " + AllMessages[x].message);
   }
+  //When user sends a 'msg' object --> {user:user,message:message}
   socket.on('message', (msg) => {
-    last10.push(msg);
-    console.log("Last 10: "+last10);
-    console.log("message: " + msg);
-    console.log("msg object: "+msg);
-    console.log("msg user: "+ msg.user);
-    console.log("msg text: " + msg.message);
-    //io.emit('message', `${socket.id.substr(0,2)} said: ${msg}` );
-    io.emit('message', msg.user + " said: " + msg.message);
+    AllMessages.push(msg);     //Save the Message
+    console.log("msg user: "+ msg.user + " sent: " + msg.message);      //Log the User sending the message along with the message being sent
+    io.emit('message', msg.user + " said: " + msg.message);     //emit the new message as a 'message'
   });
 });
 
